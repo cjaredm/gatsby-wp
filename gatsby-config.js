@@ -1,10 +1,39 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Gatsby Wordpress`,
+    description: `Attempting to learn how to use Wordpress as a headless CMS with Gatsby.`,
+    author: `@cjaredm`,
   },
   plugins: [
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        /* The base URL of the WordPress site without the trailingslash and the protocol. This is required. */
+        baseUrl: "uwh.pqv.mybluehost.me",
+        protocol: "http",
+        hostingWPCOM: false,
+        useACF: false,
+        // searchAndReplaceContentUrls: {
+        //   sourceUrl: `http://${process.env.WP_BASE_URL}`,
+        //   replacementUrl: `https://${process.env.WP_BASE_URL}`,
+        // },
+        includedRoutes: [
+          "**/categories",
+          "**/posts",
+          "**/pages",
+          "**/media",
+          "**/tags",
+          "**/taxonomies",
+          "**/users",
+          "/wp-api-menus/**"
+        ],
+        verboseOutput: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

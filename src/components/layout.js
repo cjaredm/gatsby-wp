@@ -5,27 +5,41 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
-import "./layout.css"
+import React from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
+import {incomingEdges} from '../transformers/graphql';
+import Header from "./header";
+import "./layout.css";
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
+  const {site, allWordpressWpApiMenusMenusItems: menus} = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
           title
         }
       }
+      allWordpressWpApiMenusMenusItems {
+        edges {
+          node {
+            name
+            count
+            items {
+              order
+              title
+              url
+              object_slug
+            }
+          }
+        }
+      }
     }
-  `)
+  `);
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={site.siteMetadata.title} nav={incomingEdges(menus.edges).find(item => item.name === "Header").items} />
       <div
         style={{
           margin: `0 auto`,
