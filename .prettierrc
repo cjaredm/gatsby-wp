@@ -1,7 +1,7 @@
 {
   "endOfLine": "lf",
-  "semi": false,
-  "singleQuote": false,
+  "semi": true,
+  "quotes": "backtick",
   "tabWidth": 2,
   "trailingComma": "es5"
 }

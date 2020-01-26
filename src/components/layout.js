@@ -8,12 +8,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import {incomingEdges} from '../transformers/graphql';
+import { incomingEdges } from "../transformers/graphql";
 import Header from "./header";
 import "./layout.css";
 
 const Layout = ({ children }) => {
-  const {site, allWordpressWpApiMenusMenusItems: menus} = useStaticQuery(graphql`
+  const {
+    site,
+    allWordpressWpApiMenusMenusItems: menus,
+  } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -39,7 +42,12 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={site.siteMetadata.title} nav={incomingEdges(menus.edges).find(item => item.name === "Header").items} />
+      <Header
+        siteTitle={site.siteMetadata.title}
+        nav={
+          incomingEdges(menus.edges).find(item => item.name === "Header").items
+        }
+      />
       <div
         style={{
           margin: `0 auto`,
@@ -48,18 +56,14 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <footer />
       </div>
     </>
-  )
-}
+  );
+};
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export default Layout
+export default Layout;

@@ -4,4 +4,62 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+const path = require(`path`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+
+  const PostTemplate = path.resolve("./src/templates/post.js");
+  const PageTemplate = path.resolve("./src/templates/page.js");
+
+  const result = await graphql(`
+    {
+      allWordpressPost {
+        edges {
+          node {
+            slug
+            wordpress_id
+          }
+        }
+      }
+      allWordpressPage {
+        edges {
+          node {
+            slug
+            wordpress_id
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  const Posts = result.data.allWordpressPost.edges;
+
+  Posts.forEach(post => {
+    createPage({
+      path: `/post/${post.node.slug}`,
+      component: PostTemplate,
+      context: {
+        id: post.node.wordpress_id,
+      },
+    });
+  });
+
+  const Pages = result.data.allWordpressPage.edges;
+
+  Pages.forEach(post => {
+    createPage({
+      path: `/${post.node.slug}`,
+      component: PageTemplate,
+      context: {
+        id: post.node.wordpress_id,
+      },
+    });
+  });
+};
