@@ -1,11 +1,11 @@
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Wordpress`,
-    description: `Attempting to learn how to use Wordpress as a headless CMS with Gatsby.`,
+    title: `Fortress Innovations`,
+    description: `Build Different`,
     author: `@cjaredm`,
   },
   plugins: [
@@ -22,15 +22,17 @@ module.exports = {
         //   replacementUrl: `https://${process.env.WP_BASE_URL}`,
         // },
         includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/pages",
-          "**/media",
-          "**/tags",
-          "**/taxonomies",
-          "**/users",
-          "/wp-api-menus/**"
+          "**/*/*/categories",
+          "**/*/*/posts",
+          "**/*/*/pages",
+          "**/*/*/media",
+          "**/*/*/tags",
+          "**/*/*/taxonomies",
+          "**/*/*/users",
+          "**/*/*/menus",
+          "/wp-api-menus/**",
         ],
+        excludedRoutes: ["/wp/v2/themes/**", "/wp/v2/settings/**"],
         verboseOutput: false,
       },
     },
@@ -60,4 +62,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
