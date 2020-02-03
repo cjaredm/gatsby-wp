@@ -17,6 +17,7 @@ I made this to learn how to use Wordpress as a headless CMS. To use this templat
     ```shell
     npm install -g gatsby-cli
     ```
+
     ```shell
     git clone https://github.com/cjaredm/gatsby-wp.git
     cd gatsby-wp/
@@ -26,8 +27,9 @@ I made this to learn how to use Wordpress as a headless CMS. To use this templat
 
 1.  **Setup Env Files and Gatsby-Config.**
 
-    Next you need to add two env files to the root folder of Gatsby.    
+    Next you need to add two env files to the root folder of Gatsby.  
     Andbe sure to copy what is in the example.env.development into your new files but add your own information.
+
     ```
     📦root
     ┣ 📂src
