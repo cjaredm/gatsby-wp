@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Fortress Innovations`,
-    description: `Build Different`,
+    title: "Morty's Place",
+    description: `Sand, Space and Your Stuff`,
     author: `@cjaredm`,
   },
   plugins: [

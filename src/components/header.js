@@ -4,7 +4,6 @@ import React from "react";
 import styled from "styled-components";
 
 const Header = ({ siteTitle, nav = [] }) => {
-  console.log(nav);
   return (
     <Container>
       <h1>
