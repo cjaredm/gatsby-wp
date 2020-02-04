@@ -34,16 +34,6 @@ const Layout = ({ children }) => {
               title
               url
               object_slug
-              wordpress_children {
-                title
-                url
-                object_slug
-                wordpress_children {
-                  title
-                  url
-                  object_slug
-                }
-              }
             }
           }
         }

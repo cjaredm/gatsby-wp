@@ -1,9 +1,10 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Header = ({ siteTitle, nav = [] }) => {
+  console.log(nav);
   return (
     <Container>
       <h1>
@@ -22,7 +23,7 @@ const Header = ({ siteTitle, nav = [] }) => {
         <ul className="MainNavUL">
           {nav.map(item => (
             <NavItem key={item.object_slug}>
-              <Link to={"/" || item.object_slug}>{item.title}</Link>
+              <Link to={"/" || item.url}>{item.title}</Link>
               {item.wordpress_children && (
                 <SubMenu>
                   {item.wordpress_children.map(subMenu => (
@@ -136,7 +137,7 @@ const NavItem = styled.li`
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: border-color ease-in-out 0.25s;
+  transition: border-color ease-in-out 0.25s, color ease-in-out 0.25s;
 
   &:hover,
   &:focus {

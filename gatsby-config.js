@@ -15,8 +15,8 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         /* The base URL of the WordPress site without the trailingslash and the protocol. This is required. */
-        baseUrl: "uwh.pqv.mybluehost.me",
-        protocol: "http",
+        baseUrl: process.env.WP_BASE_URL,
+        protocol: "https",
         hostingWPCOM: false,
         useACF: false,
         // searchAndReplaceContentUrls: {
