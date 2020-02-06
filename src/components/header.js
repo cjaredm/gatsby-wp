@@ -22,7 +22,7 @@ const Header = ({ siteTitle, nav = [] }) => {
         <ul className="MainNavUL">
           {nav.map(item => (
             <NavItem key={item.object_slug}>
-              <Link to={"/" || item.url}>{item.title}</Link>
+              <Link to={item.url || "/" }>{item.title}</Link>
               {item.wordpress_children && (
                 <SubMenu>
                   {item.wordpress_children.map(subMenu => (

@@ -11,14 +11,7 @@ function IndexPage(props) {
 
       <div
         dangerouslySetInnerHTML={{
-          __html: xss(props.data.wordpressPage.content, {
-            onIgnoreTag: function(tag, html, options) {
-              if (tag.substr(0, 6) === "figure") {
-                // do not filter its attributes
-                return html;
-              }
-            },
-          }),
+          __html: props.data.wordpressPage.content
         }}
       />
     </Layout>
