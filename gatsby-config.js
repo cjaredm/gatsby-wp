@@ -19,10 +19,10 @@ module.exports = {
         protocol: "https",
         hostingWPCOM: false,
         useACF: false,
-        // searchAndReplaceContentUrls: {
-        //   sourceUrl: `http://${process.env.WP_BASE_URL}`,
-        //   replacementUrl: `https://${process.env.WP_BASE_URL}`,
-        // },
+        auth: {
+          htaccess_user: process.env.WP_USERNAME,
+          htaccess_pass: process.env.WP_PASSWORD
+        },
         includedRoutes: [
           "**/*/*/categories",
           "**/*/*/posts",
